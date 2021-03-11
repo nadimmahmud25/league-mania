@@ -30,7 +30,7 @@ const LeagueDetails = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => setLeagueDetails(data.leagues[0]));
-    }, [])
+    }, [leagueId])
     
     
     return (
