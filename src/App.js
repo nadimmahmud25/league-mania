@@ -20,6 +20,9 @@ function App() {
         <Route path="/league/:leagueId">
           <LeagueDetails/>
         </Route>
+        <Route path="/social">
+         
+        </Route>
         <Route exact path="/">
           <Home />
         </Route>

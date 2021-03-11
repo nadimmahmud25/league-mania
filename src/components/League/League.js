@@ -10,16 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  });
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    margin: 'auto',
+    maxWidth: 200,
+  },
+  
+}));
 
 const League = (props) => {
     const classes = useStyles();
@@ -35,8 +39,8 @@ const League = (props) => {
     return (
         <div>
    
-   <Grid container>
-      <Grid   item xs={4}>
+   <Grid container spacing={6}>
+        <Grid item xs={4}>
      <Card className={classes.root}>
      
       <CardActionArea>
@@ -46,22 +50,22 @@ const League = (props) => {
           <h2>{strLeague}</h2>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-          <h3>{strSport}</h3>
+          <h3>Sport Type:{strSport}</h3>
          
           </Typography>
         </CardContent>
         
       </CardActionArea>
       <CardActions>
-      <Link to={`/league/${idLeague}`}>show detail of {idLeague}</Link>
       <Button variant="contained" color="primary" onClick={() => handleClick(idLeague)} >
-      Explore
+      Explore <FontAwesomeIcon icon={faArrowRight} />
      </Button>
       </CardActions>
       
     </Card>
     </Grid>
     </Grid>
+   
     
     </div>
 

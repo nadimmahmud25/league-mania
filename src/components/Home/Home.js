@@ -11,7 +11,6 @@ const Home = () => {
     }, [])
     return (
         <div >
-           <h2> Club </h2>
            <Header></Header>
         
             {
