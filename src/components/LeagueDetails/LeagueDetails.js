@@ -3,6 +3,8 @@ import './LeagueDetails.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import male from '../../images/male.png';
+import female from '../../images/female.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { fab, faFacebook, faTwitterSquare, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faFlag, faFutbol,faLandmark,faMars,} from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
 
 const LeagueDetails = () => {
     const {leagueId} = useParams();
-    const [leagueDetails, setLeagueDetails] = useState({});
+     const [leagueDetails, setLeagueDetails] = useState({});
     useEffect(() =>{
         const url = `https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=${leagueId}`;
         fetch(url)
@@ -28,10 +30,10 @@ const LeagueDetails = () => {
         .then(data => setLeagueDetails(data.leagues[0]));
     }, [leagueId])
     
-    
     return (
-        
-      <div >
+      <div>
+      
+      { <img src={leagueDetails.strBadge} alt="" />}
          { <img src={leagueDetails.strLogo} alt="" />}
         
         <Card >
@@ -45,8 +47,11 @@ const LeagueDetails = () => {
             <h3><FontAwesomeIcon icon={faFlag} />Country:{leagueDetails.strCountry}</h3>
             <h3><FontAwesomeIcon icon={faFutbol} />Sport Type:{leagueDetails.strSport}</h3>
             <h3><FontAwesomeIcon icon={faMars} />Gender:{leagueDetails.strGender}</h3>
-            { <img src={leagueDetails.strBadge} alt=""/>}
-            
+            <div>
+             {leagueDetails.strGender=== "Male" ?
+              <img src={male} />
+            : <img src={female} />}
+            </div>
           </Typography>
         
          <Typography gutterBottom variant="h5" component="h2">
@@ -62,7 +67,7 @@ const LeagueDetails = () => {
     <a href={`https://${leagueDetails.strFacebook}`}><FontAwesomeIcon icon={faFacebook} /></a>
     </footer>
 
-        </div>
+    </div>
         
         
     );

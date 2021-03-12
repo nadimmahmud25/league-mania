@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import stadium from '../../images/Stadium.jpg';
 
 const Header = () => {
     return (
@@ -7,7 +8,9 @@ const Header = () => {
         <div className="navbar">
             <div className="container">
                 <nav className="navbar-nav">
-                    <h2 className="navbar-logo">Player List:</h2>
+                <h2 >Sport World</h2>
+                <img src={stadium} alt="Sport World" />
+                    
                 </nav>
             </div>
         </div>
